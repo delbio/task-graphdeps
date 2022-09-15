@@ -126,7 +126,7 @@ def main(query, output, quiet):
                     color = COLOR_UNBLOCKED
                 else:
                     has_pending_deps = 0
-                    for depend in datum['depends'].split(','):
+                    for depend in datum['depends']:
                         for datum2 in data:
                             if (datum2['uuid'] == depend and
                                     datum2['status'] == 'pending'):
@@ -169,7 +169,7 @@ def main(query, output, quiet):
     quiet_print('Resolving dependencies', quiet)
     for datum in data:
         if datum['description']:
-            for dep in datum.get('depends', '').split(','):
+          for dep in datum.get('depends', []):
                 if dep != '' and dep in valid_uuids:
                     lines.append('"%s" -> "%s";' % (dep, datum['uuid']))
                     continue
