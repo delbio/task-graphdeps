@@ -81,7 +81,7 @@ def call_taskwarrior(cmd):
 def get_json(query_parsed):
     """Call taskwarrior, returning objects from json"""
     result, err = call_taskwarrior(
-        'export %s rc.json.array=on rc.verbose=nothing' % query_parsed)
+        'rc.json.array=on rc.verbose=nothing %s export' % query_parsed)
     return json.loads(result)
 
 
